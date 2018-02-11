@@ -12,5 +12,13 @@
         [
             "react"
         ]
+    ],
+    "plugins": [
+        [
+            "transform-react-jsx",
+            {
+                "pragma": "Glamor.createElement" // convert JSX into this instead of default createElement
+            }
+        ]
     ]
 }
