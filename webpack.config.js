@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './app.js',
+  entry: './app.coffee',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'), // absolute path required
@@ -10,9 +10,16 @@ module.exports = {
   module: {
     rules: [
       {
-        loader: "babel-loader",
-        test: /\.js$/,
-        exclude: /node_modules/
+        test: /\.coffee$/,
+        exclude: /(node_modules|dist)/,
+        use: [
+          {
+            loader: 'babel-loader'
+          },
+          {
+            loader: 'coffee-loader'
+          }
+        ]
       }
     ]
   },
