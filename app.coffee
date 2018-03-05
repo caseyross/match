@@ -1,13 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { h, app } from 'hyperapp'
 
-ReactDOM.render(
-    <h1 css={
-        color: 'blue'
-        ':hover':
-            color: 'red'
-    }>
-        hello world
-    </h1>
-    document.getElementById 'react'
-)
+state =
+    count: 0
+
+actions =
+    update:
+        (value) ->
+            (state) ->
+                count: state.count + value
+    
+view = (state, actions) -> 
+    <div>
+        <h1>{state.count}</h1>
+        <button onclick={-> actions.update -1}>-</button>
+        <button onclick={-> actions.update 1}>+</button>
+    </div>
+
+app(state, actions, view, document.body)

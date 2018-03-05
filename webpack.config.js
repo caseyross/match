@@ -1,8 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
-  mode: 'development',
   entry: './app.coffee',
   output: {
     filename: 'bundle.js',
@@ -13,7 +11,7 @@ module.exports = {
     rules: [
       {
         test: /\.coffee$/,
-        exclude: /(node_modules|dist)/,
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader'
@@ -25,15 +23,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.ProvidePlugin(
-      {
-        Glamor: 'glamor/react' // for babel config
-      }
-    )
-  ],
-  devServer: {
-    contentBase: './dist',
-    public: '721eb570c2f4493c96a33511353a1b8e.vfs.cloud9.us-east-2.amazonaws.com' // allow access from this host
-  },
+  mode: 'development'
 };
