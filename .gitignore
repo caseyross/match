@@ -1,3 +1,6 @@
-.c9
-dist
+// NPM dependencies
 node_modules
+
+// Parcel output
+.cache
+dist
