@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "hyperapp": "^1.1.2"
+    "hyperapp": "^1.2.1"
   },
   "devDependencies": {
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.1",
-    "coffeescript": "^2.2.2",
+    "coffeescript": "^2.2.3",
     "parcel-bundler": "^1.6.2"
   },
   "scripts": {
