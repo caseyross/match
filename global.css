@@ -10,3 +10,8 @@ body {
     margin: 0;
     font: 5vh/1.15 monospace;
 }
+
+ul {
+    margin: 0;
+    padding: 0;
+}

@@ -1,2 +1,13 @@
 export default
-    count: 0
+    survey:
+        items: [
+            {
+                p: 'When I get a call, my phone _____.'
+                rs: [
+                    'vibrates'
+                    'rings'
+                    'does nothing'
+                    'shuts off'
+                ]
+            }
+        ]
