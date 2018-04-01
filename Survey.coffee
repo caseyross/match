@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
 
-export default () -> (state, actions) ->
+export default -> (state, actions) ->
     item = state.survey.items[0]
     <main
         style={
@@ -21,7 +21,7 @@ export default () -> (state, actions) ->
         >
             {item.p}
         </div>
-        <ul
+        <menu
             style={
                 height: '60vh'
                 display: 'flex'
@@ -31,7 +31,7 @@ export default () -> (state, actions) ->
             }
         >
             {Answer r for r in item.rs}
-        </ul>
+        </menu>
         <div
             style={
                 height: '10vh'
@@ -41,7 +41,7 @@ export default () -> (state, actions) ->
     </main>
 
 Answer = (x) ->
-    <li
+    <button
         style={
             margin: '1.4vh 0'
             height: '10vh'
@@ -56,4 +56,4 @@ Answer = (x) ->
         }
     >
         {x}
-    </li>
+    </button>
