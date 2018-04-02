@@ -1,7 +1,7 @@
 import { h } from 'hyperapp'
 
 export default -> (state, actions) ->
-    item = state.survey.items[0]
+    item = state.survey.items[Math.floor (Math.random() * state.survey.items.length)]
     <main 
         style={
             padding: '0 10vw'
@@ -28,9 +28,9 @@ export default -> (state, actions) ->
         <nav
             style={
                 height: '10vh'
+                fontSize: '3vh'
                 color: '#666'
                 display: 'flex'
-                fontSize: '3vh'
                 justifyContent: 'space-between'
                 alignItems: 'center'
             }
