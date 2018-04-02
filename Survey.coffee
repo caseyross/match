@@ -1,7 +1,7 @@
 import { h } from 'hyperapp'
 
 export default -> (state, actions) ->
-    item = state.survey.items[Math.floor (Math.random() * state.survey.items.length)]
+    item = state.survey.items[state.survey.current]
     <main 
         style={
             padding: '0 10vw'
@@ -35,9 +35,50 @@ export default -> (state, actions) ->
                 alignItems: 'center'
             }
         >
-            <a>back</a>
-            <a>menu</a>
-            <a>skip</a>
+            <a
+                onclick={->
+                    actions.survey.back()
+                }
+                style={
+                    visibility:
+                        if state.survey.previous.length
+                            'visible'
+                        else
+                            'hidden'
+                    height: '5vh'
+                    width: '20vw'
+                    display: 'flex'
+                    justifyContent: 'flex-start'
+                    alignItems: 'center'
+                }
+            >
+                back
+            </a>
+            <a
+                style={
+                    height: '5vh'
+                    width: '20vw'
+                    display: 'flex'
+                    justifyContent: 'center'
+                    alignItems: 'center'
+                }
+            >
+                menu
+            </a>
+            <a
+                onclick={->
+                    actions.survey.skip()
+                }
+                style={
+                    height: '5vh'
+                    width: '20vw'
+                    display: 'flex'
+                    justifyContent: 'flex-end'
+                    alignItems: 'center'
+                }
+            >
+                skip
+            </a>
         </nav>
     </main>
 

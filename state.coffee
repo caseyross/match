@@ -1,5 +1,8 @@
 export default
     survey:
+        previous: [Math.floor (Math.random() * 5)]
+        current: Math.floor (Math.random() * 5)
+        next: Math.floor (Math.random() * 5)
         items: [
             {
                 p: 'When I get a call, my phone _____.'
