@@ -2,55 +2,55 @@ import { h } from 'hyperapp'
 
 export default -> (state, actions) ->
     item = state.survey.items[0]
-    <main
+    <main 
         style={
-            background: 'beige'
+            padding: '0 10vw'
         }
     >
         <div
             style={
-                height: '10vh'
-            }
-        >
-        </div>
-        <div
-            style={
-                height: '20vh'
-                padding: '0 15vw'
+                height: '40vh'
+                paddingTop: '10vh'
+                paddingBottom: '8vh'
             }
         >
             {item.p}
         </div>
         <menu
             style={
-                height: '60vh'
+                height: '50vh'
                 display: 'flex'
                 flexDirection: 'column'
-                justifyContent: 'center'
-                alignItems: 'center'
             }
         >
             {Answer r for r in item.rs}
         </menu>
-        <div
+        <nav
             style={
                 height: '10vh'
+                color: '#666'
+                display: 'flex'
+                fontSize: '3vh'
+                justifyContent: 'space-between'
+                alignItems: 'center'
             }
         >
-        </div>
+            <a>back</a>
+            <a>menu</a>
+            <a>skip</a>
+        </nav>
     </main>
 
 Answer = (x) ->
     <button
         style={
-            margin: '1.4vh 0'
+            margin: '1.25vh 0'
             height: '10vh'
-            width: '70vw'
             padding: '0 5vmin'
             fontSize: '4vh'
-            background: '#e2ddc9'
-            border: '0.4vmin solid #3c3930'
-            boxShadow: '0.8vmin 0.4vh 0 0 #a59a79'
+            fontWeight: 700
+            background: '#eee'
+            borderRadius: '1vh'
             display: 'flex'
             alignItems: 'center'
         }

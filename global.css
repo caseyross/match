@@ -8,7 +8,10 @@ html {
 
 body {
     margin: 0;
-    font: 5vh/1.15 monospace;
+    font: 5vh/1.15 Karla, sans-serif;
+    color: #fff;
+    background: #333;
+    
 }
 
 menu {
