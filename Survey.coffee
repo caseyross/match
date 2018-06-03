@@ -1,33 +1,12 @@
 import { h } from 'hyperapp'
 
 export default -> (state, actions) ->
-    item = state.survey.items[state.survey.current]
-    <main 
-        style={
-            padding: '0 10vw'
-        }
-    >
-        <div
-            style={
-                height: '40vh'
-                paddingTop: '10vh'
-                paddingBottom: '8vh'
-            }
-        >
-            {item.p}
-        </div>
-        <menu
-            style={
-                height: '50vh'
-                display: 'flex'
-                flexDirection: 'column'
-            }
-        >
-            {Answer r for r in item.rs}
-        </menu>
+    question = state.questions[state.survey.current]
+    <main>
         <nav
             style={
                 height: '10vh'
+                margin: '0 10vw'
                 fontSize: '3vh'
                 color: '#666'
                 display: 'flex'
@@ -45,22 +24,14 @@ export default -> (state, actions) ->
                             'visible'
                         else
                             'hidden'
-                    height: '5vh'
-                    width: '20vw'
-                    display: 'flex'
-                    justifyContent: 'flex-start'
-                    alignItems: 'center'
+                    cursor: 'pointer'
                 }
             >
                 back
             </a>
             <a
                 style={
-                    height: '5vh'
-                    width: '20vw'
-                    display: 'flex'
-                    justifyContent: 'center'
-                    alignItems: 'center'
+                    cursor: 'pointer'
                 }
             >
                 menu
@@ -70,31 +41,66 @@ export default -> (state, actions) ->
                     actions.survey.skip()
                 }
                 style={
-                    height: '5vh'
-                    width: '20vw'
-                    display: 'flex'
-                    justifyContent: 'flex-end'
-                    alignItems: 'center'
+                    cursor: 'pointer'
                 }
             >
                 skip
             </a>
         </nav>
+        <header
+            style={
+                height: '20vh'
+                margin: '0 10vw'
+            }
+        >
+            {question.q}
+        </header>
+        <menu
+            style={
+                height: '70vh'
+                position: 'relative'
+                overflow: 'hidden'
+            }
+        >
+            {
+                for type, text of question.r
+                    Response type, text
+            }
+        </menu>
     </main>
 
-Answer = (x) ->
+Response = (type, text) ->
     <button
         style={
-            margin: '1.25vh 0'
-            height: '10vh'
-            padding: '0 5vmin'
-            fontSize: '4vh'
-            fontWeight: 700
+            height: switch type
+                when 'n', 'y' then '60vw'
+                else '40vw'
+            width: switch type
+                when 'n', 'y' then '60vw'
+                else '40vw'
+            fontSize: '3vh'
             background: '#eee'
-            borderRadius: '1vh'
+            borderRadius: '50%'
             display: 'flex'
+            justifyContent: 'center'
             alignItems: 'center'
+            position: 'absolute'
+            bottom: switch type
+                when 'hn', 'hy', 'm' then '40vw'
+                else '-20vw'
+            left: switch type
+                when 'n' then '-20vw'
+                when 'y', 'hy' then '60vw'
+                when 'm' then '30vw'
+                else ''
         }
     >
-        {x}
+        {
+            if text
+            then text
+            else switch type
+                when 'y' then 'yes'
+                when 'n' then 'no'
+                when 'm' then 'maybe'
+        }
     </button>
